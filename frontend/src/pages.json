@@ -3,7 +3,8 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "嚼个菜根"
+				"navigationBarTitleText": "嚼个菜根",
+				"enablePullDownRefresh": true
 			}
 		}
 	],

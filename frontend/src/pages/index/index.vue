@@ -1,53 +1,34 @@
 <template>
-  <u-notice-bar mode="closable" text="嚼个菜根小程序目前还处于测试阶段，功能尚未完善请见谅！"></u-notice-bar>
-  <u-swiper :list="swiperList" indicator indicatorMode="line" circular></u-swiper>
-  <u-tabs :list="campusList" :scrollable="false"></u-tabs>
-  <u-waterfall :model-value="menuList"  :value="menuList" add-time="50">
-    <template #left="{leftList}">
-      <view v-for="item in leftList" :key="item.id">
-        <menu-item :menu="item" :name=item.name></menu-item>
-      </view>
-    </template>
-    <template #right="{rightList}">
-      <view v-for="item in rightList" :key="item.id">
-        <menu-item :menu="item" :name=item.name></menu-item>
-      </view>
-    </template>
-  </u-waterfall>
-  <tabbar></tabbar>
+  <!-- 首页 -->
+  <view v-if="currentTab === 0">
+    <home></home>
+  </view>
+  <!-- 食堂 -->
+  <view v-if="currentTab === 1">
+    <canteen></canteen>
+  </view>
+
+  <view>
+    <u-tabbar :value="currentTab" @change="name => currentTab = name">
+      <u-tabbar-item icon="home" text="首页" @click=""></u-tabbar-item>
+      <u-tabbar-item icon="list" text="食堂" @click=""></u-tabbar-item>
+      <u-tabbar-item icon="search" text="菜根一下"></u-tabbar-item>
+      <u-tabbar-item icon="grid" text="分类"></u-tabbar-item>
+      <u-tabbar-item icon="account" text="我的"></u-tabbar-item>
+    </u-tabbar>
+  </view>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
-import Tabbar from "@/components/tabbar.vue";
-import MenuItem from "@/components/menu-item.vue";
+import { ref } from "vue";
+import Home from "@/pages/index/home.vue";
+import Canteen from "@/pages/index/canteen.vue";
 
-const swiperList = ref([
-  'https://cdn.uviewui.com/uview/swiper/swiper3.png',
-  'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-  'https://cdn.uviewui.com/uview/swiper/swiper1.png',
-])
-
-const campusList = reactive([
-  { name: '仙林'},
-  { name: '鼓楼'},
-  { name: '浦口'},
-  { name: '苏州'}
-])
-
-const menuList = ref([
-  {id: 1, name: '川味香锅'},
-  {id: 2, name: '麻辣烫'},
-  {id: 3, name: '炒饭'},
-  {id: 4, name: '炒面'},
-  {id: 5, name: '炒河粉'},
-  {id: 6, name: '炒粉丝'},
-  {id: 7, name: '炒年糕'},
-  {id: 8, name: '炒土豆丝'},
-])
+const currentTab = ref(0);
 
 </script>
 
-<style>
+
+<style scoped lang="scss">
 
 </style>

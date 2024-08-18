@@ -4,7 +4,6 @@ import {ref} from "vue";
 const props = defineProps(['name'])
 const url = ref("https://cdn.uviewui.com/uview/album/".concat(Math.floor(Math.random() * 10 + 1).toString()).concat(".jpg"))
 
-
 </script>
 
 <template>
